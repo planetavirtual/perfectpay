@@ -47,10 +47,10 @@
     			</thead>
     			<tbody>
     				<tr v-for="sale, index in sales">
-                        <td>{{ sale.date }}</td>
+                        <td>{{ sale.date | toDate }}</td>
                         <td>{{ sale.quantity }}</td>
                         <td>{{ sale.product_name }}</td>
-                        <td>{{ sale.amount }}</td>
+                        <td>R$ {{ sale.amount | toCurrency }}</td>
                         <td>{{ sale.customer_name }}</td>
                         <td>{{ sale.status }}</td>
                         <td>
@@ -82,7 +82,7 @@
                     <tr v-for="report, index in reports">
                         <td>{{ report.status }}</td>
                         <td>{{ report.total_sales }}</td>
-                        <td>{{ report.total_amount }}</td>
+                        <td>R$ {{ report.total_amount | toCurrency }}</td>
                     </tr>
                 </tbody>
                 </table>

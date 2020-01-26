@@ -30,9 +30,14 @@
                     </div>
 
                     <div class="row">
-                        <div class="col-12 form-group">
-                            <label class="control-label">Valor</label>
-                            <input type="text" v-model="sale.amount" class="form-control">
+                        <div class="col-12">
+                            <label>Valor</label>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon3">R$</span>
+                                </div>
+                                <money v-model="sale.amount" v-bind="money" class="form-control"></money>
+                            </div>
                         </div>
                     </div>
 
@@ -65,10 +70,11 @@
 
 <script>
     import Datepicker from 'vuejs-datepicker';
+    import {Money} from 'v-money';
 
     export default {
         components: {
-            Datepicker
+            Datepicker, Money
         },
         mounted() {
             let app = this;
@@ -107,7 +113,15 @@
                     amount: '',
                 },
                 products: [],
-                customers: []
+                customers: [],
+                money: {
+                    decimal: ',',
+                    thousands: '.',
+                    prefix: '',
+                    suffix: '',
+                    precision: 2,
+                    masked: false
+                }
             }
         },
         methods: {

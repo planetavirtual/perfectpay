@@ -57,7 +57,7 @@ class SalesController extends Controller
     {
         $data = $request->all();
 
-        $data['date'] = date('Y-m-d', strtotime($data['date']));
+        $data['date']   = date('Y-m-d', strtotime($data['date']));
 
         $sale = Sales::create($data);
         return $sale;

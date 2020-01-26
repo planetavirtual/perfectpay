@@ -23,4 +23,14 @@ const routes = [
 
 const router = new VueRouter({ routes })
 
+Vue.filter('toCurrency', function (value) {
+    let val = (value/1).toFixed(2).replace('.', ',')
+    return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".")
+});
+
+Vue.filter('toDate', function (value) {
+	let date = new Date(Date.parse(value))
+    return date.toLocaleDateString('pt-BR');
+});
+
 const app = new Vue({ router }).$mount('#app')
